@@ -6,6 +6,7 @@
 import os
 import sys
 import pygame
+import random
 from pygame.locals import *  # para QUIT, teclas etc.
 
 # Constantes
@@ -198,9 +199,9 @@ class Pala(pygame.sprite.Sprite):
         """
         if ball.speed[0] >= 0 and ball.rect.centerx >= WIDTH / 2:
             if self.rect.centery < ball.rect.centery:
-                self.rect.centery += self.speed * time
+                self.rect.centery += self.speed * time - random.randint(0,7)
             if self.rect.centery > ball.rect.centery:
-                self.rect.centery -= self.speed * time
+                self.rect.centery -= self.speed * time + random.randint(0,7)
 # ---------------------------------------------------------------------
 
 # Funciones
