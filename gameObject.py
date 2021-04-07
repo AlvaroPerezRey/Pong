@@ -190,7 +190,7 @@ class Pala(pygame.sprite.Sprite):
         todas las pelotas.
 
         La línea 3 comprueba si el centery de la pelota es menor que el centery de la bola, es decir si la pala está
-        más arriba que que la pelota en cullo caso, ejecuta la línea 4 que mueve la pala de la cpu hacia abajo.
+        más arriba que que la pelota en cuyo caso, ejecuta la línea 4 que mueve la pala de la cpu hacia abajo.
 
         Las líneas 5 y 6 hacen lo mismo, pero a la inversa como se ve a simple vista.
         :param time:
@@ -262,8 +262,8 @@ def main():
     pygame.display.set_caption("Pruebas Pygame")  # crear y abrir la ventana
     background_image = load_image('images/fondo_pong.png')  # cargar imagen
     bola = Bola()
-    pala_jug = Pala(30)
-    pala_cpu = Pala(WIDTH - 30) #pala del ordenador a 30 píxeles del borde
+    pala_jug = Pala(10)
+    pala_cpu = Pala(WIDTH - 10) #pala del ordenador a 30 píxeles del borde
 
     # Ahora vamos a crear un reloj que controle el tiempo del juego, esto es
     # importante para el movimiento, pues sabemos cuanto tiempo a pasado desde
