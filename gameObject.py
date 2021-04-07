@@ -105,12 +105,12 @@ class Bola(pygame.sprite.Sprite):
 
         self.rect.centerx += int(self.speed[0] * time)
         self.rect.centery += int(self.speed[1] * time)
-        if self.rect.left <= 0:
+        if self.rect.left <= 5.5:
             puntos[1] += 1
-        if self.rect.right >= WIDTH:
+        if self.rect.right >= WIDTH-5.5:
             puntos[0] += 1
 
-        if self.rect.left <= 0 or self.rect.right >= WIDTH:
+        if self.rect.left <= 5.5 or self.rect.right >= WIDTH-5.5:
             self.speed[0] = -self.speed[0]
             self.rect.centerx += int(self.speed[0] * time)
 
@@ -305,14 +305,14 @@ def main():
 
         screen.blit(background_image, (0, 0))# ponerla en la ventana, en la posición x=0,y=0
 
+        # Ponemos los sprites del marcador ¿por qué la pelota pasa por debajo?
+        screen.blit(p_jug, p_jug_rect)
+        screen.blit(p_cpu, p_cpu_rect)
 
         screen.blit(bola.image, bola.rect)  # dibujar la bola
         screen.blit(pala_jug.image, pala_jug.rect)  # dibujar pala del jugador
         screen.blit(pala_cpu.image, pala_cpu.rect)  # dibujar pala de la cpu
 
-        # Ponemos los sprites del marcador ¿por qué la pelota pasa por debajo?
-        screen.blit(p_jug, p_jug_rect)
-        screen.blit(p_cpu, p_cpu_rect)
         pygame.display.flip()  # actualiza la pantalla para que se muestre la imagen
     return 0
 
