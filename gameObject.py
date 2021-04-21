@@ -110,8 +110,10 @@ class Bola(pygame.sprite.Sprite):
         if self.rect.right >= WIDTH-5.5:
             puntos[0] += 1
 
-        if self.rect.left <= 5.5 or self.rect.right >= WIDTH-5.5:
+        if self.rect.left <= 0 or self.rect.right >= WIDTH:
             self.speed[0] = -self.speed[0]
+            self.rect.centerx =WIDTH//2
+            self.rect.centery =HEIGHT//2
             self.rect.centerx += int(self.speed[0] * time)
 
         if self.rect.top <= 0 or self.rect.bottom >= HEIGHT:
@@ -129,6 +131,12 @@ class Bola(pygame.sprite.Sprite):
             self.rect.centerx += self.speed[0] * time
 
         return puntos
+
+    def reiniciar(self):
+        self.rect.centerx = WIDTH // 2
+        self.rect.centery = HEIGHT // 2
+        self.dir_x = -self.dir_x
+        self.dir_y = random.choice([-5, 5])
 
 
 class Pala(pygame.sprite.Sprite):
@@ -279,7 +287,7 @@ def main():
         time = clock.tick(60)
         keys = pygame.key.get_pressed()  # controlar pulsación de teclas
         for eventos in pygame.event.get():  # manejo de eventos
-            if eventos.type == QUIT:  # pygame.locals.QUIT
+            if eventos.type == pygame.QUIT:  # pygame.locals.QUIT
                 pygame.quit()
                 sys.exit(0)
 
